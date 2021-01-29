@@ -19,11 +19,13 @@ public class ColorArrayDisplayer {
 				image.setRGB(i, j, colors[i][j].getRGB());
 			}
 		}
-		
 		label.setIcon(new ImageIcon(image));
 		window.add(label);
 		window.pack();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);	
+		
+
 	}
+	
 }
