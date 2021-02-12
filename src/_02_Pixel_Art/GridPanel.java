@@ -34,7 +34,7 @@ public class GridPanel extends JPanel{
 		setPreferredSize(new Dimension(windowWidth, windowHeight));
 		
 		//2. Initialize the pixel array using the rows and cols variables.
-		Pixel[][]pixels = new Pixel[rows][cols];
+		pixels = new Pixel[rows][cols];
 		
 		//3. Iterate through the array and initialize each element to a new pixel.
 		for(int i = 0; i < pixels.length; i++) {

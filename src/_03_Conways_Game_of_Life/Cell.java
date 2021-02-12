@@ -28,7 +28,13 @@ public class Cell implements Drawable{
 	 * (source: Wikipedia)
 	 * */
 	public void liveOrDie(int numNeighbors) {
-		
+		for(int i = 0; i < x; i++) {
+			for(int j = 0; j < y; j++) {
+				if(getLivingNeighbors(x,y)<2) {
+					cells[i][j].isAlive = false;
+				}
+			}
+		}
 	}
 	
 	public int getX() {
