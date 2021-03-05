@@ -36,15 +36,15 @@ public class MazeMaker{
 	private static void selectNextPath(Cell currentCell) {
 		//A. mark cell as visited
 		currentCell.hasBeenVisited();
+		Stack<Cell> s = new Stack<Cell>();
 		//B. Get an ArrayList of unvisited neighbors using the current cell and the method below
-		ArrayList<Cell> unvisited = new ArrayList<Cell>(1);
+		ArrayList<Cell> cell = getUnvisitedNeighbors(currentCell);
 		//C. if has unvisited neighbors,
-		if(currentCell.getUnvisitedNeighbors()) {
+		if(cell.size()>0) {
 			//C1. select one at random.
 			Random r = new Random();
-			Cell i = unvisited.get(r.nextInt(unvisited.size()));
+			Cell i = cell.get(r.nextInt(cell.size()));
 			//C2. push it to the stack
-			Stack<Cell> s = new Stack<Cell>();
 			s.push(i);
 			//C3. remove the wall between the two cells
 			removeWalls(currentCell, i);
@@ -54,7 +54,7 @@ public class MazeMaker{
 			//C5. call the selectNextPath method with the current cell
 			selectNextPath(currentCell);
 		//D. if all neighbors are visited
-		}else if(maze.getUnvisitedNeighbors(currentCell)>8) {
+		}else if(cell.size()>8) {
 			//D1. if the stack is not empty
 			if(s.size()>0) {
 				// D1a. pop a cell from the stack
@@ -89,7 +89,10 @@ public class MazeMaker{
 	//   Any unvisited neighbor of the passed in cell gets added
 	//   to the ArrayList
 	private static ArrayList<Cell> getUnvisitedNeighbors(Cell c) {
-		
-		return null;
+		ArrayList<Cell> unvisited = new ArrayList<Cell>(1);
+		if(c.hasBeenVisited()==false) {
+			unvisited.add(c);
+		}
+		return unvisited;
 	}
 }

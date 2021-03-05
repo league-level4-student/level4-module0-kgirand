@@ -123,19 +123,26 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 		int living = 0; 
 		if(x+1<cells.length && cells[x+1][y].isAlive) {
 			living ++;
-		}else if(x+1<cells.length && y+1<cells.length && cells[x+1][y+1].isAlive) {
+		}
+		if(x+1<cells.length && y+1<cells.length && cells[x+1][y+1].isAlive) {
 			living ++;
-		}else if(y+1<cells.length && cells[x][y+1].isAlive) {
+		}
+		if(y+1<cells.length && cells[x][y+1].isAlive) {
 			living ++;
-		}else if(x-1>=0 && y+1<cells.length && cells[x-1][y+1].isAlive) {
+		}
+		if(x-1>=0 && y+1<cells.length && cells[x-1][y+1].isAlive) {
 			living ++;
-		}else if(x-1>=0 && cells[x-1][y].isAlive) {
+		}
+		if(x-1>=0 && cells[x-1][y].isAlive) {
 			living ++;
-		}else if(x-1>=0 && y-1>=0 && cells[x-1][y-1].isAlive) {
+		}
+		if(x-1>=0 && y-1>=0 && cells[x-1][y-1].isAlive) {
 			living ++;
-		}else if(y-1>=0 && cells[x][y-1].isAlive) {
+		}
+		if(y-1>=0 && cells[x][y-1].isAlive) {
 			living ++;
-		}else if(x+1<cells.length && y-1>=0 && cells[x+1][y-1].isAlive) {
+		}
+		if(x+1<cells.length && y-1>=0 && cells[x+1][y-1].isAlive) {
 			living ++;
 		}
 		return living;
