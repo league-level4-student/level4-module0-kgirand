@@ -29,10 +29,10 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 		this.cellsPerRow = cpr;
 	
 		//2. Calculate the cell size.
-				cellSize = w/cpr;
+				cellSize = h/cpr;
 
 		//3. Initialize the cell array to the appropriate size.
-	
+	cells = new Cell[cellsPerRow][cellsPerRow];
 		//3. Iterate through the array and initialize each cell.
 		//   Don't forget to consider the cell's dimensions when 
 		//   passing in the location.
@@ -121,21 +121,21 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 	//   cell identified by x and y
 	public int getLivingNeighbors(int x, int y){
 		int living = 0; 
-		if(cells[x+1][y].isAlive = true) {
+		if(x+1<cells.length && cells[x+1][y].isAlive) {
 			living ++;
-		}else if(cells[x+1][y+1].isAlive = true) {
+		}else if(x+1<cells.length && y+1<cells.length && cells[x+1][y+1].isAlive) {
 			living ++;
-		}else if(cells[x][y+1].isAlive = true) {
+		}else if(y+1<cells.length && cells[x][y+1].isAlive) {
 			living ++;
-		}else if(cells[x-1][y+1].isAlive = true) {
+		}else if(x-1>=0 && y+1<cells.length && cells[x-1][y+1].isAlive) {
 			living ++;
-		}else if(cells[x-1][y].isAlive = true) {
+		}else if(x-1>=0 && cells[x-1][y].isAlive) {
 			living ++;
-		}else if(cells[x-1][y-1].isAlive = true) {
+		}else if(x-1>=0 && y-1>=0 && cells[x-1][y-1].isAlive) {
 			living ++;
-		}else if(cells[x][y-1].isAlive = true) {
+		}else if(y-1>=0 && cells[x][y-1].isAlive) {
 			living ++;
-		}else if(cells[x+1][y-1].isAlive = true) {
+		}else if(x+1<cells.length && y-1>=0 && cells[x+1][y-1].isAlive) {
 			living ++;
 		}
 		return living;
@@ -163,12 +163,14 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 		//10. Use e.getX() and e.getY() to determine
 		//    which cell is clicked. Then toggle
 		//    the isAlive variable for that cell.
-		if(cells[e.getX()][e.getY()].equals(true)) {
-			cells[e.getX()][e.getY()].isAlive = false;
+			
+		if(cells[e.getY()/cellSize][e.getX()/cellSize].isAlive == true) {
+			cells[e.getY()/cellSize][e.getX()/cellSize].isAlive = false;
 		}else {
-			cells[e.getX()][e.getY()].isAlive = true;
-
+			cells[e.getY()/cellSize][e.getX()/cellSize].isAlive = true;
 		}
+		
+		
 		
 		repaint();
 	}
