@@ -63,26 +63,26 @@ public class TheWrongWayCow {
 					if (field[i].length > j + 2 && field[i][j + 1] == o) {
 						if (field[i][j + 2] == w) {
 							east += 1;
-							easts[0] = i;
-							easts[1] = j;
+							easts[0] = j;
+							easts[1] = i;
 						}
 					} else if (j > 1 && field[i][j - 1] == o) {
 						if (field[i][j - 2] == w) {
 							west += 1;
-							wests[0] = i;
-							wests[1] = j;
+							wests[0] = j;
+							wests[1] = i;
 						}
 					} else if (field.length > i + 2 && field[i + 1][j] == o) {
 						if (field[i + 2][j] == w) {
 							north += 1;
-							norths[0] = i;
-							norths[1] = j;
+							norths[0] = j;
+							norths[1] = i;
 						}
 					} else if (i > 1 && field[i - 1][j] == o) {
 						if (field[i - 2][j] == w) {
 							south += 1;
-							souths[0] = i;
-							souths[1] = j;
+							souths[0] = j;
+							souths[1] =i;
 						}
 					}
 				}
@@ -93,17 +93,41 @@ public class TheWrongWayCow {
 		System.out.println(south);
 		System.out.println(west);
 
-		int[] ints = new int[0];
+
+		int[] ints = new int[2];
 		if (north == 1) {
 			ints = norths;
 		} else if (south == 1) {
-			ints = souths;
+			ints=souths;
 		} else if (west == 1) {
-			ints = wests;
+			ints=wests;
 		} else {
-			ints = easts;
+			ints=easts;
 		}
-
+		
 		return ints;
+	
+		
+		
+		
+		
+		
+		//		int[] ints = new int[2];
+//		if (north == 1) {
+//			ints[0]=norths[0];
+//			ints[1]=norths[1];
+//		} else if (south == 1) {
+//			ints[0]=souths[0];
+//			ints[1]=souths[1];
+//		} else if (west == 1) {
+//			ints[0]=wests[0];
+//			ints[1]=wests[1];
+//		} else {
+//			ints[0]=easts[0];
+//			ints[1]=easts[1];
+//		}
+//		System.out.println(ints[0]);
+//		System.out.println(ints[1]);
+//		return ints;
 	}
 }
